@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Miss Me?</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #e74c3c;
+            font-size: 2em;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Do You Miss Me?</h1>
+        <form onsubmit="return checkMiss()">
+            <label>
+                <input type="radio" name="miss" value="yes" required> Yes
+            </label>
+            <label>
+                <input type="radio" name="miss" value="no"> No
+            </label>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkMiss() {
+            const radios = document.getElementsByName('miss');
+            let missValue = '';
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    missValue = radios[i].value;
+                    break;
+                }
+            }
+            if (missValue === 'yes') {
+                document.getElementById('result').textContent = 'Yes, I miss you too!';
+            } else if (missValue === 'no') {
+                document.getElementById('result').textContent = 'No, not really.';
+            } else {
+                return false; // If no option is selected
+            }
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
